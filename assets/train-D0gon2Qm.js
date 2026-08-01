@@ -1,0 +1,1 @@
+import{g as s,b as a}from"./index-B9MaIgeB.js";const t=a=>s("/tasks",a),k=s=>a("/tasks",s),o=s=>a(`/tasks/${s}/start`),p=s=>a(`/tasks/${s}/pause`),r=s=>a(`/tasks/${s}/stop`),$=a=>s(`/tasks/${a}/logs`);export{$ as a,r as b,k as c,t as g,p,o as s};
