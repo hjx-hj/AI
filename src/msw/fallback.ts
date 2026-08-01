@@ -2,8 +2,6 @@ import { mockUser, mockUsers, mockRoles, mockTasks, mockGpus, mockServers, mockG
 import { TaskStatusEnum } from '@/types/train';
 import { GpuStatusEnum } from '@/types/resource';
 
-const now = () => new Date().toISOString().replace('T', ' ').slice(0, 19);
-
 export const mockResponse = (url: string, method: string, data?: unknown) => {
   const path = url.replace('/api', '');
   const body = data as Record<string, unknown> | undefined;
