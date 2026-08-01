@@ -1,1 +1,0 @@
-import{j as s}from"./index-CgrfaeWg.js";import{d as t}from"./vendor-C8NcrucJ.js";import{_ as r,B as o,$ as i}from"./antd-BsaMRBUc.js";const a=()=>{const a=t();return s.jsx(r,{status:"403",title:"无权限访问",subTitle:"抱歉，您没有权限访问该页面",extra:s.jsx(o,{type:"primary",icon:s.jsx(i,{}),onClick:()=>a("/"),children:"返回首页"})})};export{a as NotFound};

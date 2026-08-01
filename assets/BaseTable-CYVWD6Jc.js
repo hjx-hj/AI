@@ -1,1 +1,0 @@
-import{j as o}from"./index-CgrfaeWg.js";import{E as a}from"./antd-BsaMRBUc.js";const r=({columns:r,dataSource:s,pagination:n,...t})=>o.jsx(a,{columns:r,dataSource:s,pagination:{showSizeChanger:!0,showQuickJumper:!0,showTotal:o=>`共 ${o} 条`,...n},rowKey:"id",scroll:{x:"max-content",y:600},bordered:!0,...t});export{r as B};

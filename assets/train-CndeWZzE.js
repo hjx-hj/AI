@@ -1,0 +1,1 @@
+import{g as s,p as a}from"./request-DS5GOGMY.js";const t=a=>s("/tasks",a),k=s=>a("/tasks",s),o=s=>a(`/tasks/${s}/start`),p=s=>a(`/tasks/${s}/pause`),r=s=>a(`/tasks/${s}/stop`),e=a=>s(`/tasks/${a}/logs`);export{e as a,r as b,k as c,t as g,p,o as s};
