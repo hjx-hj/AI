@@ -57,7 +57,7 @@ request.interceptors.response.use(
       message.error('登录已过期，请重新登录');
       storage.removeToken();
       storage.removeUser();
-      window.location.href = '/login';
+      window.location.hash = '#/login';
       return Promise.reject(new Error('登录已过期'));
     }
     message.error(error.response?.data?.message || error.message || '网络错误');

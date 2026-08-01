@@ -1,15 +1,17 @@
 import { Dropdown, Avatar, Switch, Button, Space } from 'antd';
 import { FullscreenOutlined, FullscreenExitOutlined, MoonOutlined, SunOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 import { useUserStore } from '@/store/user';
 import { useConfigStore } from '@/store/config';
 
 export const Header = () => {
   const { user, logout: storeLogout } = useUserStore();
   const { theme, toggleTheme, watermarkEnabled, setWatermarkEnabled } = useConfigStore();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     storeLogout();
-    window.location.href = '/login';
+    navigate('/login', { replace: true });
   };
 
   const menuItems = [
