@@ -2,17 +2,14 @@ import { Dropdown, Avatar, Switch, Button, Space } from 'antd';
 import { FullscreenOutlined, FullscreenExitOutlined, MoonOutlined, SunOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import { useUserStore } from '@/store/user';
 import { useConfigStore } from '@/store/config';
-import { logout } from '@/api/auth';
 
 export const Header = () => {
   const { user, logout: storeLogout } = useUserStore();
   const { theme, toggleTheme, watermarkEnabled, setWatermarkEnabled } = useConfigStore();
 
   const handleLogout = () => {
-    logout().then(() => {
-      storeLogout();
-      window.location.href = '/login';
-    });
+    storeLogout();
+    window.location.href = '/login';
   };
 
   const menuItems = [

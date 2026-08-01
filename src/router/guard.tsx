@@ -15,18 +15,16 @@ export const AuthGuard = ({ children }: AuthGuardProps) => {
   useEffect(() => {
     const savedToken = storage.getToken();
     const savedUser = storage.getUser<UserInfo>();
-    if (savedToken && savedUser && !token) {
+    if (savedToken && savedUser) {
       setUser(savedUser);
     }
-  }, [token, setUser]);
+  }, []);
 
-  const currentToken = useUserStore((state) => state.token);
-
-  if (!currentToken && location.pathname !== '/login') {
+  if (!token && location.pathname !== '/login') {
     return <Navigate to="/login" replace />;
   }
 
-  if (currentToken && location.pathname === '/login') {
+  if (token && location.pathname === '/login') {
     return <Navigate to="/" replace />;
   }
 

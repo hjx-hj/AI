@@ -35,6 +35,7 @@ export const useUserStore = create<UserState>((set, get) => ({
   logout: () => {
     storage.removeToken();
     storage.removeUser();
+    storage.removeTheme?.();
     set({ user: null, token: '', permissions: [] });
   },
 
