@@ -1,12 +1,12 @@
 import { Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AuthGuard } from '@/router/guard';
 import { MainLayout } from '@/layouts/MainLayout';
 import { routes } from '@/router/routes';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthGuard>
         <Suspense fallback={<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>加载中...</div>}>
           <Routes>
@@ -30,7 +30,7 @@ const App = () => {
           </Routes>
         </Suspense>
       </AuthGuard>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
