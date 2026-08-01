@@ -3,6 +3,9 @@ import App from './App';
 import './index.css';
 import { startMockServer } from './msw/server';
 
-startMockServer();
+const bootstrap = async () => {
+  await startMockServer();
+  createRoot(document.getElementById('root')!).render(<App />);
+};
 
-createRoot(document.getElementById('root')!).render(<App />);
+bootstrap();
