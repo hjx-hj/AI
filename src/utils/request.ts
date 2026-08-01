@@ -1,6 +1,9 @@
 import axios, { type AxiosInstance, type AxiosResponse, type InternalAxiosRequestConfig } from 'axios';
 import { storage } from './storage';
 import { message } from 'antd';
+import { mockResponse } from '@/msw/fallback';
+
+const USE_FALLBACK = import.meta.env.PROD;
 
 const request: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_APP_API_BASE_URL,
@@ -32,7 +35,7 @@ request.interceptors.response.use(
     message.error(msg || '请求失败');
     return Promise.reject(new Error(msg || '请求失败'));
   },
-  (error) => {
+  async (error) => {
     if (error.response?.status === 401) {
       message.error('登录已过期，请重新登录');
       storage.removeToken();
@@ -40,6 +43,20 @@ request.interceptors.response.use(
       window.location.href = '/login';
       return Promise.reject(new Error('登录已过期'));
     }
+
+    // 生产环境 fallback：请求失败时用 mock 数据兜底
+    if (USE_FALLBACK && error.config) {
+      const { url, method, data } = error.config;
+      const result = mockResponse(url, method?.toUpperCase() || 'GET', data);
+      if (result) {
+        if (result.code !== 200) {
+          message.error(result.message);
+          return Promise.reject(new Error(result.message));
+        }
+        return { data: result } as AxiosResponse;
+      }
+    }
+
     message.error(error.response?.data?.message || error.message || '网络错误');
     return Promise.reject(error);
   },

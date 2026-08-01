@@ -3,8 +3,8 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import { visualizer } from 'rollup-plugin-visualizer';
 
-export default defineConfig({
-  base: '/AI/',
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/AI/' : '/',
   plugins: [react(), visualizer()],
   resolve: {
     alias: {
@@ -31,4 +31,4 @@ export default defineConfig({
     port: 5173,
     host: true,
   },
-});
+}));
